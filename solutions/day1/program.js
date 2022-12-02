@@ -10,7 +10,7 @@ export default function Day(data) {
         }
     });
     arr.sort((a, b) => a - b);
-    console.log("Part one: " + arr[arr.length - 1]);
+    console.log("Part one: " + Math.max(...arr));
     const sum = arr.slice(-3).reduce((acc, val) => acc + val);
     console.log("Part two: " + sum)
 }
