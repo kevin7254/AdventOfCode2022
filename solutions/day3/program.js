@@ -1,12 +1,12 @@
 export default function Day(data) {
     let temp = [];
     let sum = 0, sum2 = 0;
-    data.forEach((element, index) => {
+    data.forEach(element => {
         const arr = [];
-        for (let char of element) arr.push(getPriority(parseInt(char.charCodeAt(0))));
+        for (let char of element) arr.push(getPriority(char));
         temp.push(arr);
         sum += partOne(arr.slice());
-        if ((index != 0) && (temp.length % 3 == 0)) {
+        if (temp.length % 3 == 0) {
             sum2 += partTwo(temp);
             temp = [];
         }
@@ -25,6 +25,7 @@ const partTwo = (arr) => {
     return arr[0].filter(val => arr[1].indexOf(val) != -1 && arr[2].indexOf(val) != -1)[0];
 }
 
-const getPriority = (e) => {
-    return (e >= 97 && e <= 122 ? e - 96 : e - 38); // ascii to prio
+const getPriority = (char) => {
+    const prio = parseInt(char.charCodeAt(0));
+    return (prio >= 97 && prio <= 122 ? prio - 96 : prio - 38); // ascii to prio
 }
